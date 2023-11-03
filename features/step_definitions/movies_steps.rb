@@ -5,6 +5,8 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
+
+
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
@@ -22,4 +24,6 @@ Then /I should see all the movies/ do
   Movie.all.each do |movie|
     step %{I should see "#{movie.title}"}
   end
+
+
 end
