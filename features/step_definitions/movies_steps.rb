@@ -4,42 +4,6 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
-When(/^I go to the edit page for "([^"])"$/) do |movie_title|
-  # Implement the step to navigate to the edit page for the specified movie title.
-end
-
-When(/^I fill in "Director" with "([^"])"$/) do |director_name|
-  # Implement the step to fill in the "Director" field with the director's name.
-end
-
-When(/^I press "Update Movie Info"$/) do
-  # Implement the step to press the "Update Movie Info" button.
-end
-
-When(/^I follow "Find Movies With Same Director"$/) do
-  # Implement the step to click on the "Find Movies With Same Director" link.
-end
-
-Then(/^I should be on the Similar Movies page for "([^"])"$/) do |movie_title|
-  # Implement the step to verify that you are on the Similar Movies page for the specified movie title.
-end
-
-Then(/^I should see "([^"])"$/) do |movie_title|
-  # Implement the step to verify that the specified movie title is displayed.
-end
-
-Then(/^I should not see "([^"])"$/) do |movie_title|
-  # Implement the step to verify that the specified movie title is not displayed.
-end
-
-Then(/^I should be on the home page$/) do
-  # Implement the step to verify that you are on the home page.
-end
-
-Then(/^I should see "([^"])" has no director info$/) do |movie_title|
-  # Implement the step to verify a specific message is displayed.
-end
-
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
@@ -58,5 +22,72 @@ Then /I should see all the movies/ do
     step %{I should see "#{movie.title}"}
   end
 
+  ##Happy Path 1 Start ##
+
+  When("I go to the edit page for {string}") do |movie_title|
+    # Implement the step to navigate to the edit page for the given movie title.
+  end
+  
+  And("I fill in {string} with {string}") do |field, director_name|
+    # Implement the step to fill in the "Director" field with the director's name.
+  end
+  
+  And("I press {string}") do |button_name|
+    # Implement the step to press the "Update Movie Info" button.
+  end
+  
+  Then("the director of {string} should be {string}") do |movie_title, director_name|
+    # Implement the step to verify that the director of the movie is as expected.
+  end
+
+## HAPPY PATH 1 END ##
+
+## HAPPY PATH 2 START ##
+
+Given("I am on the details page for {string}") do |movie_title|
+  # Implement the step to navigate to the details page for the given movie title.
+end
+
+When("I follow {string}") do |link_text|
+  # Implement the step to click on the "Find Movies With Same Director" link.
+end
+
+Then("I should be on the Similar Movies page for {string}") do |movie_title|
+  # Implement the step to verify that you are on the Similar Movies page for the given movie title.
+end
+
+And("I should see {string}") do |movie_title|
+  # Implement the step to verify that the specified movie title is displayed.
+end
+
+But("I should not see {string}") do |movie_title|
+  # Implement the step to verify that the specified movie title is not displayed.
+end
+## HAPPY PATH 2 END ##
+
+
+## SAD PATH START ##
+
+Given("I am on the details page for {string}") do |movie_title|
+  # Implement the step to navigate to the details page for the given movie title.
+end
+
+Then("I should not see {string}") do |director_name|
+  # Implement the step to verify that the director's name is not displayed.
+end
+
+When("I follow {string}") do |link_text|
+  # Implement the step to click on the "Find Movies With Same Director" link.
+end
+
+Then("I should be on the home page") do
+  # Implement the step to verify that you are on the home page.
+end
+
+And("I should see {string}") do |message|
+  # Implement the step to verify a specific message is displayed.
+end
+
+## SAD PATH END ##
 
 end
